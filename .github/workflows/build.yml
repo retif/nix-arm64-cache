@@ -28,12 +28,6 @@ jobs:
           nix copy --to file://$(pwd)/cache .#attic-client
           tar czf nix-cache-aarch64.tar.gz -C cache .
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: nix-cache-aarch64
-          path: nix-cache-aarch64.tar.gz
-
       - name: Create release (on tag)
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
